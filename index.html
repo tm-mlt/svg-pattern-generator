@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="./src/main.css">
+    <script type="module" src="./public/index.js"></script>
+</head>
+
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
+     enable-background="new 0 0 32 32" xml:space="preserve"
+     style="display: none;"
+>
+     <symbol id="loading-spinner" class="loading" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             fill="#000000" version="1.1" width="800px" height="800px" viewBox="0 0 26.349 26.35"
+             xml:space="preserve">
+        <g>
+	    <g>
+		    <circle cx="13.792" cy="3.082" r="3.082"/>
+            <circle cx="13.792" cy="24.501" r="1.849"/>
+            <circle cx="6.219" cy="6.218" r="2.774"/>
+            <circle cx="21.365" cy="21.363" r="1.541"/>
+            <circle cx="3.082" cy="13.792" r="2.465"/>
+            <circle cx="24.501" cy="13.791" r="1.232"/>
+            <path d="M4.694,19.84c-0.843,0.843-0.843,2.207,0,3.05c0.842,0.843,2.208,0.843,3.05,0c0.843-0.843,0.843-2.207,0-3.05    C6.902,18.996,5.537,18.988,4.694,19.84z"/>
+            <circle cx="21.364" cy="6.218" r="0.924"/>
+	    </g>
+        </g>
+     </symbol>
+    <symbol id="resize-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+            viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="6" y1="26" x2="26" y2="6"/>
+        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="13,27 5,27 5,19 "/>
+        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="19,5 27,5 27,13 "/>
+        <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="6" y1="6" x2="26" y2="26"/>
+        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="5,13 5,5 13,5 "/>
+        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="27,19 27,27 19,27 "/>
+        <script xmlns=""/>
+    </symbol>
+</svg>
+<div id="svg-defs"></div>
+<div class="suspension">
+    <div class="container-horizontal">
+        <div id="canvas-container">
+            <!--            <svg id="resize"><use xlink:href="#resize-icon"></use></svg>-->
+        </div>
+        <div class="settings-container">
+            <form id="setting-form" onsubmit="return false">
+                <div class="settings-row">
+                    <fieldset class="settings-fieldset">
+                        <legend>Canvas</legend>
+                        <div class="settings-row">
+                            <div class="settings-column">
+                                <label for="setting-canvas-width">Width</label>
+                                <input
+                                        id="setting-canvas-width"
+                                        name="canvasWidth"
+                                        type="number"
+                                        value="800"
+                                >
+                            </div>
+                            <div class="settings-column">
+                                <label for="setting-canvas-height">Height</label>
+                                <input
+                                        id="setting-canvas-height"
+                                        name="canvasHeight"
+                                        type="number"
+                                        value="500"
+                                >
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="settings-row"
+                     style="display: none">
+                    <label class="settings-row__label" for="setting-figures">Figures</label>
+                    <textarea
+                            class="settings-input"
+                            name="figures"
+                            id="setting-figures"
+                            cols="30"
+                            rows="10"
+                    >
+<defs>
+<svg id="oval" width="109" height="141" viewBox="0 0 109 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.27785 45.4427C-6.41264 81.586 4.8554 128.657 44.1474 139.178L44.1437 139.192C77.9077 148.233 98.2883 121.831 105.722 94.1059C115.532 57.5167 103.763 12.3685 64.4711 1.84671C31.1948 -7.06419 10.7151 17.7036 3.27785 45.4427Z" fill="white"/>
+</svg>
+<svg id="j-shape" width="114" height="151" viewBox="0 0 114 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M68.9295 150.344C40.1558 150.344 0 131.105 0 106.903C0 101.117 2.27527 95.7305 5.59264 91.177C11.1795 83.3198 17.3511 81.3815 25.6647 82.0758C40.3642 83.3198 60.4364 93.6476 73.8969 102.558C80.5548 106.961 82.2222 108.512 80.3116 106.076C64.0201 85.3102 36.9311 43.779 36.9311 22.944C36.9311 13.108 43.7684 7.35109 50.7911 3.97213C60.8532 -0.870661 73.0632 -3.54954 83.2122 9.67701C98.1143 29.349 113.844 68.4269 113.844 99.4567C113.844 130.7 97.9117 150.372 68.9295 150.372V150.344Z" fill="white"/>
+</svg>
+<svg id="i-shape" width="61" height="123" viewBox="0 0 61 123" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M37.07 0C54.6643 0 60.228 7.23814 60.228 22.3393C60.228 29.7858 59.4001 38.0596 50.5017 103.845C48.348 119.785 46.9874 122.869 35.1885 122.869H25.0453C13.2463 122.869 11.8858 119.785 9.73215 103.845C0.827929 38.0596 0 29.7858 0 22.3393C0 7.23814 5.58685 0 23.1579 0H37.0238H37.07Z" fill="white"/>
+</svg>
+<svg id="o-shape" width="112" height="141" viewBox="0 0 112 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M52.6172 140.661C16.9714 140.661 0.726105 111.835 0.726105 76.0555C0.934526 39.6623 19.6924 0 58.4761 0C92.8541 0 111.207 27.1937 111.207 63.9977C111.207 100.998 90.9783 140.661 52.6172 140.661V140.661ZM43.0704 89.0159C42.1325 91.1856 43.5104 92.7652 46.492 92.2502C48.6547 92.0345 50.8345 92.052 52.9935 92.3023C55.156 92.4895 57.2915 92.9124 59.362 93.5636C62.1409 94.6745 63.8662 93.4132 63.4725 91.1104C62.934 86.3197 63.1946 78.7344 64.0514 71.8318C64.9083 64.9292 66.4772 57.477 68.1561 52.9177C69.094 50.748 67.7162 49.1743 64.7346 49.6892C62.5718 49.9049 60.3921 49.8875 58.233 49.6372C56.0706 49.4466 53.9352 49.0217 51.8646 48.37C49.0799 47.2649 47.3545 48.5263 47.7482 50.829C48.2866 55.614 48.0319 63.1993 47.1693 70.1076C46.3066 77.016 44.7377 84.4624 43.0646 89.0217L43.0704 89.0159Z" fill="white"/>
+</svg>
+<svg id="u-shape" width="119" height="141" viewBox="0 0 119 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 59.1549V31.0355C0 10.3452 6.8316 0 24.8369 0H29.5958C46.5764 0 52.9911 8.67883 52.9911 25.4579C52.9911 69.315 49.4711 79.4461 49.4711 83.1722C49.4711 84.4103 50.0906 84.8269 51.3353 84.8269C52.9911 84.8269 55.6832 83.9995 59.1974 83.9995C62.7116 83.9995 65.4095 84.8269 67.0653 84.8269C68.3043 84.8269 68.9296 84.4103 68.9296 83.1722C68.9296 79.4461 65.4096 69.286 65.4096 25.4579C65.4096 8.67883 71.8243 0 88.799 0H93.558C111.563 0 118.395 10.3452 118.395 31.0355V59.1549C118.395 101.143 96.8696 140.655 59.1974 140.655C21.5253 140.655 0 101.143 0 59.1549Z" fill="white"/>
+</svg>
+</defs>
+                </textarea>
+                </div>
+                <div class="settings-row">
+                    <fieldset class="settings-fieldset">
+                        <legend>Ratios</legend>
+                        <div class="settings-row">
+                            <label>0</label>
+                            <span>0</span>
+                            <input
+                                    class="settings-input"
+                                    name="ratio"
+                                    id="setting-ratio[0]"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="20"
+                                    oninput="ratio_0_output.value = this.value"
+                            >
+                            <span>100</span>
+                            <span>
+                                [<output for="setting-ratio[0]" name="ratio_0_output"></output>]
+                            </span>
+                        </div>
+                        <div class="settings-row">
+                            <label>J</label>
+                            <span>0</span>
+                            <input
+                                    class="settings-input"
+                                    name="ratio"
+                                    id="setting-ratio[1]"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="20"
+                                    oninput="ratio_1_output.value = this.value"
+                            >
+                            <span>100</span>
+                            <span>
+                                [<output for="setting-ratio[1]" name="ratio_1_output"></output>]
+                            </span>
+                        </div>
+                        <div class="settings-row">
+                            <label>I</label>
+                            <span>0</span>
+                            <input
+                                    class="settings-input"
+                                    name="ratio"
+                                    id="setting-ratio[2]"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="20"
+                                    oninput="ratio_2_output.value = this.value"
+                            >
+                            <span>100</span>
+                            <span>
+                                [<output for="setting-ratio[2]" name="ratio_2_output"></output>]
+                            </span>
+                        </div>
+                        <div class="settings-row">
+                            <label>O</label>
+                            <span>0</span>
+                            <input
+                                    class="settings-input"
+                                    name="ratio"
+                                    id="setting-ratio[3]"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="20"
+                                    oninput="ratio_3_output.value = this.value"
+                            >
+                            <span>100</span>
+                            <span>
+                                [<output for="setting-ratio[2]" name="ratio_3_output"></output>]
+                            </span>
+                        </div>
+                        <div class="settings-row">
+                            <label>U</label>
+                            <span>0</span>
+                            <input
+                                    class="settings-input"
+                                    name="ratio"
+                                    id="setting-ratio[4]"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value="20"
+                                    oninput="ratio_4_output.value = this.value"
+                            >
+                            <span>100</span>
+                            <span>
+                                [<output for="setting-ratio[2]" name="ratio_4_output"></output>]
+                            </span>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-amount">Amount</label>
+                    <span class="settings-input__range-label">0</span>
+                    <input
+                            class="settings-input"
+                            name="amount"
+                            oninput="amount_output.value = this.value"
+                            id="setting-amount"
+                            type="range"
+                            min="0"
+                            max="1000"
+                            value="2"
+                    >
+                    <span class="settings-input__range-label">1000</span>
+                    <span class="settings-input__output">
+                        <input
+                                style="width: 100%"
+                                name="amount_output"
+                                type="number"
+                                min="0"
+                                max="1000"
+                                oninput="amount.value = this.value; amount.dispatchEvent(new Event('change', {bubbles: true}))"
+                        >
+                        <!--                        [<output for="setting-amount" name="amount_output"></output>]-->
+                    </span>
+
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-base-height">Base&nbsp;height</label>
+                    <span class="settings-input__range-label">10px</span>
+                    <input
+                            class="settings-input"
+                            name="baseHeight"
+                            id="setting-base-height"
+                            type="range"
+                            min="10"
+                            max="70"
+                            value="30"
+                    >
+                    <span class="settings-input__range-label">70px</span>
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-scale-random-min">Scale&nbsp;random</label>
+                    <span class="settings-input__range-label">x0.25</span>
+                    <div class="double-range">
+                        <input
+                                class="settings-input"
+                                name="scaleRandomMin"
+                                id="setting-scale-random-min"
+                                type="range"
+                                min="0.25"
+                                max="2"
+                                value="1"
+                                step="0.05"
+                                oninput="scale_random_output.value = Number.parseFloat(this.value).toFixed(2)"
+                        >
+                        <input
+                                class="settings-input"
+                                name="scaleRandomMax"
+                                id="setting-scale-random-max"
+                                type="range"
+                                min="0.25"
+                                max="2"
+                                value="1"
+                                step="0.05"
+                                oninput="scale_random_output.value = Number.parseFloat(this.value).toFixed(2)"
+                        >
+                    </div>
+                    <span class="settings-input__range-label">x2</span>
+<!--                    <span class="settings-input__output">-->
+                        <!--<input
+                                readonly
+                                style="width: 100%"
+                                name="scale_random_output"
+                                type="number"
+                                min="0.25"
+                                max="2"
+                                oninput="
+                                scaleRandom.value = this.value;
+                                scaleRandom.dispatchEvent(new Event('change', {bubbles: true}))"
+                        >-->
+                        <output
+                                class="settings-input__output"
+                                name="scale_random_output"
+                        ></output>
+<!--                    </span>-->
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-base-rotation">Base&nbsp;rotation</label>
+                    <span class="settings-input__range-label">-180&deg;</span>
+                    <input
+                            class="settings-input"
+                            name="baseRotation"
+                            id="setting-base-rotation"
+                            type="range"
+                            min="-180"
+                            max="180"
+                            value="0"
+                            oninput="base_rotation_output.value = this.value + '&deg;'"
+                    >
+                    <span class="settings-input__range-label">180&deg;</span>
+                    <output class="settings-input__output" name="base_rotation_output"></output>
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-rotation-random">Rotation&nbsp;random</label>
+                    <span class="settings-input__range-label">0&deg;</span>
+                    <input
+                            class="settings-input"
+                            name="rotationRandom"
+                            id="setting-rotation-random"
+                            type="range"
+                            min="0"
+                            max="360"
+                            value="0"
+                            oninput="rotation_random_output.value = this.value + '&deg;'"
+                    >
+                    <span class="settings-input__range-label">360&deg;</span>
+                    <output class="settings-input__output" name="rotation_random_output"></output>
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label">Colors</label>
+                    <datalist id="color-list">
+                        <option value="#333333"></option>
+                        <option value="#ffffff"></option>
+                        <option value="#fbe4f6"></option>
+                        <option value="#d7d3f8"></option>
+                        <option value="#a5dcf3"></option>
+                        <option value="#f7d4ab"></option>
+                    </datalist>
+                    <input
+                            class="settings-input"
+                            name="color[]"
+                            id="setting-color-a"
+                            type="color"
+                            list="color-list"
+                            value="#333333"
+                    >
+                    <input
+                            class="settings-input"
+                            name="color[]"
+                            id="setting-color-b"
+                            type="color"
+                            list="color-list"
+                            value="#fbe4f6"
+                    >
+                    <input
+                            class="settings-input"
+                            name="color[]"
+                            id="setting-color-c"
+                            type="color"
+                            list="color-list"
+                            value="#d7d3f8"
+                    >
+                    <input
+                            class="settings-input"
+                            name="color[]"
+                            id="setting-color-d"
+                            type="color"
+                            list="color-list"
+                            value="#a5dcf3"
+                    >
+                    <input
+                            class="settings-input"
+                            name="color[]"
+                            id="setting-color-e"
+                            type="color"
+                            list="color-list"
+                            value="#f7d4ab"
+                    >
+                </div>
+                <div class="settings-row">
+                    <label class="settings-row__label" for="setting-positions">Positions</label>
+                    <select
+                            name="positions"
+                            class="settings-input"
+                            id="setting-positions"
+                            oninput="
+                                setting_group_grid.style.display = this.value === 'grid' ? 'block' : 'none';
+                                setting_group_grid.disabled = this.value !== 'grid';
+
+                                setting_group_blue_noise.style.display = this.value === 'blueNoise' ? 'block' : 'none';
+                                setting_group_blue_noise.disabled = this.value !== 'blueNoise';
+                            "
+                    >
+                        <option selected value="random">random</option>
+                        <option value="grid">grid</option>
+                        <option value="blueNoise" label="blue noise">
+                            <b>blue noise</b> - random with minimal distance
+                        </option>
+                    </select>
+                </div>
+                <fieldset disabled style="display: none" class="settings-fieldset" id="setting_group_grid">
+                    <legend>Grid Settings</legend>
+                    <div class="settings-row">
+                        <label class="settings-row__label" for="settings-grid-size">Size</label>
+                        <input
+                                name="gridSize"
+                                class="settings-input"
+                                id="settings-grid-size"
+                                type="number"
+                                value="100"
+                        />
+                    </div>
+                </fieldset>
+                <fieldset disabled style="display: none" class="settings-fieldset" id="setting_group_blue_noise">
+                    <legend>Blue Noise Settings</legend>
+                    <div class="settings-row">
+                        <label class="settings-row__label" for="settings-blue-noise-minimal-distance">Minimal
+                            distance</label>
+                        <input
+                                name="blueNoiseMinimalDistance"
+                                class="settings-input"
+                                id="settings-blue-noise-minimal-distance"
+                                type="range"
+                                min="9"
+                                max="100"
+                                value="50"
+                                oninput="blue_noise_minimal_distance_output.value = this.value"
+                        />
+                        <span class="settings-input__output">
+                        <input
+                                style="width: 100%"
+                                name="blue_noise_minimal_distance_output"
+                                type="number"
+                                min="0"
+                                max="1000"
+                                oninput="
+                                blueNoiseMinimalDistance.value = this.value;
+                                blueNoiseMinimalDistance.dispatchEvent(new Event('change', {bubbles: true}))"
+                        >
+                            <!--                        [<output for="setting-amount" name="amount_output"></output>]-->
+                    </span>
+                    </div>
+                </fieldset>
+                <div class="settings-row settings-row--push-down">
+                    <label class="settings-row__label" for="setting-seed">Seed</label>
+                    <input
+                            class="settings-input"
+                            name="seed"
+                            id="setting-seed"
+                            type="number"
+                            min="0"
+                            max="4294967296"
+                            value="3601018016"
+                    >
+                    <button type="button" id="create-seed">Random&nbsp;Seed</button>
+                </div>
+                <div class="settings-row">
+                    <!--<button id="generate">Generate</button>-->
+                    <button type="button" id="copy-svg-to-clipboard">Copy SVG to Clipboard</button>
+                    <button type="button" id="copy-svg-to-file">Save SVG as File</button>
+                </div>
+                <fieldset class="settings-fieldset">
+                    <legend>Debug</legend>
+                    <div class="settings-row">
+                        <input
+                                id="debugShowPositions"
+                                name="debugShowPositions"
+                                type="checkbox"
+                        >
+                        <label for="debugShowPositions">show positions</label>
+                        <input
+                                id="debugShowBounding"
+                                name="debugShowBounding"
+                                type="checkbox"
+                        >
+                        <label for="debugShowBounding">show bounding box</label>
+                    </div>
+                    <div class="settings-row">
+                        <input
+                                id="debugShowIds"
+                                name="debugShowIds"
+                                type="checkbox"
+                        >
+                        <label for="debugShowIds">show ids</label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
