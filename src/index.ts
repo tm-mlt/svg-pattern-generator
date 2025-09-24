@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
     onFormUpdate(formUpdate);
     updateUrlParams(formUpdate.data);
 
-    if ((e.target as HTMLInputElement).name === "color") {
+    if ((e.target as HTMLInputElement).name === "color[]") {
       updateColorList((e.target as HTMLInputElement).value);
     }
   });
