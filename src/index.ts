@@ -37,7 +37,7 @@ import {DEBUG_OPTIONS} from "./debug.js";
 
 const FORM_IDS = {
   FORM: "setting-form",
-  VARIANTS: "setting-figures",
+  VARIANTS: "[name=\"figures[]\"]",
   AMOUNT: "setting-amount",
   BASE_HEIGHT: "setting-base-height",
   BASE_ROTATION: "setting-base-rotation",
@@ -366,9 +366,10 @@ function getCheckersImage(
 const validations: { [key in FormStateValidations]: (i: any) => any } = {
   canvasWidth: validateInputNumber,
   canvasHeight: validateInputNumber,
-  gridSize: validateInputNumber,
+  gridSizeX: validateInputNumber,
+  gridSizeY: validateInputNumber,
   blueNoiseMinimalDistance: validateInputNumber,
-  figures: validateSvgFigures,
+  'figures[]': validateSvgFigures,
   amount: validateInputNumber,
   baseHeight: validateInputNumber,
   scaleRandomMin: validatePass,
@@ -507,11 +508,20 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           data.blueNoise.minimalDistance = parseDecimal(value as string);
           break;
-        case 'gridSize':
+        case 'gridSizeY':
+        case 'gridSizeX':
+          const x = Math.max(1, parseDecimal(formData.get('gridSizeX') as string));
+          const y = Math.max(1, parseDecimal(formData.get('gridSizeY') as string));
           if (!data.grid) {
             data.grid = {};
           }
-          data.grid.size = new Vector2(parseDecimal(value as string) ?? 0);
+          if(!data.grid.size) {
+            data.grid.size = new Vector2(x, y);
+          } else {
+            data.grid.size.x = x;
+            data.grid.size.y = y;
+          }
+
           break;
         case 'ratio':
           data.ratio = (Array.from(elements.ratio) as HTMLInputElement[])
@@ -530,17 +540,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           data.scaleRandom.max = parseFloat(value as string);
           break;
-        /*case 'figures':
-          /!*console.log({
-            inner: defsRoot.innerHTML,
-            value,
-          })*!/
-          if (defsRoot.innerHTML === value) {
-            // console.log("SAME");
-            continue;
-          }
-          console.log("NOT THE SAME");
-          break;*/
+        case 'figures[]':
+          const textAreas: HTMLTextAreaElement[] = Array.from(elements['figures[]']) as HTMLTextAreaElement[];
+          const svgString = wrapSvgInputInDefs(textAreas.reduce((acc, i) => acc += i.value, ''));
+          data.figures = validateSvgFigures(svgString);
+
+          break;
         case 'color[]':
           data.color = new Map(/*State.data.color*/);
           skipNextTime.add(name);
@@ -571,8 +576,19 @@ document.addEventListener("DOMContentLoaded", () => {
     onSubmit();
   }
 
-  const figuresInput = getElementById(FORM_IDS.VARIANTS) as HTMLTextAreaElement;
-  figuresInput.addEventListener("change", populateSvg);
+  const figuresInput = document.querySelectorAll<HTMLTextAreaElement>(FORM_IDS.VARIANTS);
+  form.addEventListener('change', e => {
+    if((e.target as HTMLElement).tagName === "TEXTAREA") {
+      const attr = (e.target as HTMLTextAreaElement).attributes.getNamedItem("name");
+      if(attr && attr.value === "figures[]") {
+        populateSvg();
+      }
+    }
+  })
+
+  function wrapSvgInputInDefs(input: string) {
+    return `<defs>${input}</defs>`;
+  }
 
   function populateSvg() {
     console.log(State.data.figures);
@@ -580,7 +596,9 @@ document.addEventListener("DOMContentLoaded", () => {
       defsRoot.innerHTML = "";
     }
     try {
-      const svgs = parseSvg(figuresInput.value);
+      const svgs = Array.from(figuresInput)
+        .map(area => parseSvg(wrapSvgInputInDefs(area.value)))
+        .reduce((acc, elements) => [...acc, ...elements], []);
       svgs.forEach(svg => svg.setAttribute("fill", "rgb(233, 70, 144)"));
       defsRoot.append(...svgToSymbols(svgs));
 

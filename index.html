@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +59,7 @@
                                         id="setting-canvas-width"
                                         name="canvasWidth"
                                         type="number"
-                                        value="800"
+                                        value="1200"
                                 >
                             </div>
                             <div class="settings-column">
@@ -68,40 +68,85 @@
                                         id="setting-canvas-height"
                                         name="canvasHeight"
                                         type="number"
-                                        value="500"
+                                        value="750"
                                 >
                             </div>
                         </div>
                     </fieldset>
                 </div>
-                <div class="settings-row"
-                     style="display: none">
-                    <label class="settings-row__label" for="setting-figures">Figures</label>
-                    <textarea
-                            class="settings-input"
-                            name="figures"
-                            id="setting-figures"
-                            cols="30"
-                            rows="10"
-                    >
-<defs>
+                <div class="settings-row">
+                    <fieldset class="settings-fieldset">
+                        <input class="settings-fieldset__toggle" type="checkbox" id="figures-fieldset-toggle" hidden=""/>
+                        <legend class="settings-fieldset_legend--toggleable"><label
+                                for="figures-fieldset-toggle">Figures</label></legend>
+                        <div class="settings-fieldset__content">
+                            <div class="settings-row">
+                                <label for="setting-canvas-width">#1</label>
+                                <textarea
+                                        class="settings-input settings-input--textarea"
+                                        name="figures[]"
+                                        cols="30"
+                                        rows="10"
+                                >
 <svg id="oval" width="109" height="141" viewBox="0 0 109 141" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.27785 45.4427C-6.41264 81.586 4.8554 128.657 44.1474 139.178L44.1437 139.192C77.9077 148.233 98.2883 121.831 105.722 94.1059C115.532 57.5167 103.763 12.3685 64.4711 1.84671C31.1948 -7.06419 10.7151 17.7036 3.27785 45.4427Z" fill="white"/>
 </svg>
+                </textarea>
+                            </div>
+                            <div class="settings-row">
+                                <label for="setting-canvas-width">#2</label>
+                                <textarea
+                                        class="settings-input settings-input--textarea"
+                                        name="figures[]"
+                                        cols="30"
+                                        rows="10"
+                                >
 <svg id="j-shape" width="114" height="151" viewBox="0 0 114 151" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M68.9295 150.344C40.1558 150.344 0 131.105 0 106.903C0 101.117 2.27527 95.7305 5.59264 91.177C11.1795 83.3198 17.3511 81.3815 25.6647 82.0758C40.3642 83.3198 60.4364 93.6476 73.8969 102.558C80.5548 106.961 82.2222 108.512 80.3116 106.076C64.0201 85.3102 36.9311 43.779 36.9311 22.944C36.9311 13.108 43.7684 7.35109 50.7911 3.97213C60.8532 -0.870661 73.0632 -3.54954 83.2122 9.67701C98.1143 29.349 113.844 68.4269 113.844 99.4567C113.844 130.7 97.9117 150.372 68.9295 150.372V150.344Z" fill="white"/>
 </svg>
+                </textarea>
+                            </div>
+                            <div class="settings-row">
+                                <label for="setting-canvas-width">#3</label>
+                                <textarea
+                                        class="settings-input settings-input--textarea"
+                                        name="figures[]"
+                                        cols="30"
+                                        rows="10"
+                                >
 <svg id="i-shape" width="61" height="123" viewBox="0 0 61 123" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M37.07 0C54.6643 0 60.228 7.23814 60.228 22.3393C60.228 29.7858 59.4001 38.0596 50.5017 103.845C48.348 119.785 46.9874 122.869 35.1885 122.869H25.0453C13.2463 122.869 11.8858 119.785 9.73215 103.845C0.827929 38.0596 0 29.7858 0 22.3393C0 7.23814 5.58685 0 23.1579 0H37.0238H37.07Z" fill="white"/>
 </svg>
+                </textarea>
+                            </div>
+                            <div class="settings-row">
+                                <label for="setting-canvas-width">#4</label>
+                                <textarea
+                                        class="settings-input settings-input--textarea"
+                                        name="figures[]"
+                                        cols="30"
+                                        rows="10"
+                                >
 <svg id="o-shape" width="112" height="141" viewBox="0 0 112 141" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M52.6172 140.661C16.9714 140.661 0.726105 111.835 0.726105 76.0555C0.934526 39.6623 19.6924 0 58.4761 0C92.8541 0 111.207 27.1937 111.207 63.9977C111.207 100.998 90.9783 140.661 52.6172 140.661V140.661ZM43.0704 89.0159C42.1325 91.1856 43.5104 92.7652 46.492 92.2502C48.6547 92.0345 50.8345 92.052 52.9935 92.3023C55.156 92.4895 57.2915 92.9124 59.362 93.5636C62.1409 94.6745 63.8662 93.4132 63.4725 91.1104C62.934 86.3197 63.1946 78.7344 64.0514 71.8318C64.9083 64.9292 66.4772 57.477 68.1561 52.9177C69.094 50.748 67.7162 49.1743 64.7346 49.6892C62.5718 49.9049 60.3921 49.8875 58.233 49.6372C56.0706 49.4466 53.9352 49.0217 51.8646 48.37C49.0799 47.2649 47.3545 48.5263 47.7482 50.829C48.2866 55.614 48.0319 63.1993 47.1693 70.1076C46.3066 77.016 44.7377 84.4624 43.0646 89.0217L43.0704 89.0159Z" fill="white"/>
 </svg>
+                </textarea>
+                            </div>
+                            <div class="settings-row">
+                                <label for="setting-canvas-width">#5</label>
+                                <textarea
+                                        class="settings-input settings-input--textarea"
+                                        name="figures[]"
+                                        cols="30"
+                                        rows="10"
+                                >
 <svg id="u-shape" width="119" height="141" viewBox="0 0 119 141" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 59.1549V31.0355C0 10.3452 6.8316 0 24.8369 0H29.5958C46.5764 0 52.9911 8.67883 52.9911 25.4579C52.9911 69.315 49.4711 79.4461 49.4711 83.1722C49.4711 84.4103 50.0906 84.8269 51.3353 84.8269C52.9911 84.8269 55.6832 83.9995 59.1974 83.9995C62.7116 83.9995 65.4095 84.8269 67.0653 84.8269C68.3043 84.8269 68.9296 84.4103 68.9296 83.1722C68.9296 79.4461 65.4096 69.286 65.4096 25.4579C65.4096 8.67883 71.8243 0 88.799 0H93.558C111.563 0 118.395 10.3452 118.395 31.0355V59.1549C118.395 101.143 96.8696 140.655 59.1974 140.655C21.5253 140.655 0 101.143 0 59.1549Z" fill="white"/>
 </svg>
-</defs>
                 </textarea>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
                 <div class="settings-row">
                     <fieldset class="settings-fieldset">
@@ -267,23 +312,23 @@
                         >
                     </div>
                     <span class="settings-input__range-label">x2</span>
-<!--                    <span class="settings-input__output">-->
-                        <!--<input
-                                readonly
-                                style="width: 100%"
-                                name="scale_random_output"
-                                type="number"
-                                min="0.25"
-                                max="2"
-                                oninput="
-                                scaleRandom.value = this.value;
-                                scaleRandom.dispatchEvent(new Event('change', {bubbles: true}))"
-                        >-->
-                        <output
-                                class="settings-input__output"
-                                name="scale_random_output"
-                        ></output>
-<!--                    </span>-->
+                    <!--                    <span class="settings-input__output">-->
+                    <!--<input
+                            readonly
+                            style="width: 100%"
+                            name="scale_random_output"
+                            type="number"
+                            min="0.25"
+                            max="2"
+                            oninput="
+                            scaleRandom.value = this.value;
+                            scaleRandom.dispatchEvent(new Event('change', {bubbles: true}))"
+                    >-->
+                    <output
+                            class="settings-input__output"
+                            name="scale_random_output"
+                    ></output>
+                    <!--                    </span>-->
                 </div>
                 <div class="settings-row">
                     <label class="settings-row__label" for="setting-base-rotation">Base&nbsp;rotation</label>
@@ -392,14 +437,54 @@
                 <fieldset disabled style="display: none" class="settings-fieldset" id="setting_group_grid">
                     <legend>Grid Settings</legend>
                     <div class="settings-row">
-                        <label class="settings-row__label" for="settings-grid-size">Size</label>
+                        <label class="settings-row__label" for="settings-grid-size-x">Spacing&nbsp;X</label>
                         <input
-                                name="gridSize"
+                                name="gridSizeX"
                                 class="settings-input"
-                                id="settings-grid-size"
-                                type="number"
-                                value="100"
+                                id="settings-grid-size-x"
+                                type="range"
+                                value="50"
+                                min="1"
+                                max="500"
+                                oninput="grid_grid_size_output_x.value = this.value"
                         />
+                        <span class="settings-input__output">
+                        <input
+                                style="width: 100%"
+                                name="grid_grid_size_output_x"
+                                type="number"
+                                min="1"
+                                max="500"
+                                oninput="
+                                gridSizeX.value = this.value;
+                                gridSizeX.dispatchEvent(new Event('change', {bubbles: true}))"
+                        >
+                        </span>
+                    </div>
+                    <div class="settings-row">
+                        <label class="settings-row__label" for="settings-grid-size-y">Spacing&nbsp;Y</label>
+                        <input
+                                name="gridSizeY"
+                                class="settings-input"
+                                id="settings-grid-size-y"
+                                type="range"
+                                value="50"
+                                min="1"
+                                max="500"
+                                oninput="grid_grid_size_output_y.value = this.value"
+                        />
+                        <span class="settings-input__output">
+                        <input
+                                style="width: 100%"
+                                name="grid_grid_size_output_y"
+                                type="number"
+                                min="1"
+                                max="500"
+                                oninput="
+                                gridSizeY.value = this.value;
+                                gridSizeY.dispatchEvent(new Event('change', {bubbles: true}))"
+                        >
+                        </span>
                     </div>
                 </fieldset>
                 <fieldset disabled style="display: none" class="settings-fieldset" id="setting_group_blue_noise">

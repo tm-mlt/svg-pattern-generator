@@ -83,7 +83,7 @@ export interface CanvasInfo {
 export type FormStateInputs = {
   canvasWidth: HTMLInputElement,
   canvasHeight: HTMLInputElement,
-  figures: HTMLTextAreaElement,
+  'figures[]': RadioNodeList,
   amount: HTMLInputElement,
   baseHeight: HTMLInputElement,
   scaleRandomMin: HTMLInputElement,
@@ -93,7 +93,8 @@ export type FormStateInputs = {
   ratio: RadioNodeList,
   positions: HTMLInputElement,
   // grid settings
-  gridSize: HTMLInputElement,
+  gridSizeX: HTMLInputElement,
+  gridSizeY: HTMLInputElement,
   // blue noise settings
   blueNoiseMinimalDistance: HTMLInputElement,
   // end blue noise

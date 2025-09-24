@@ -59,16 +59,23 @@ canvas {
 }
 
 .suspension {
-    margin: 15vh auto auto;
+    margin: auto 40vw auto auto;
 }
 
 .settings-container {
+    position: absolute;
+    top: 1.5em;
+    bottom: 1.5em;
+    right: 1.5em;
+    width: 40vw;
+    max-width: 500px;
     padding: 1.4em;
     display: flex;
     flex-direction: column;
     flex: 1;
     background: white;
     margin-left: 1.5em;
+    overflow-y: auto;
 }
 
 .settings-row {
@@ -98,13 +105,17 @@ canvas {
     resize: vertical;
 }
 
+.settings-input--textarea {
+
+}
+
 .settings-input__output {
     flex: 0 0 45px;
     text-align: right;
 }
 
 .settings-input__output input::-webkit-outer-spin-button,
-.settings-input__output input::-webkit-inner-spin-button{
+.settings-input__output input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -127,6 +138,36 @@ canvas {
     flex: 1;
 }
 
+
+.settings-fieldset legend {
+    background: white;
+    padding: 0.2em 0.4em;
+}
+
+.settings-fieldset__content {
+    display: block;
+}
+
+.settings-fieldset__toggle {
+
+}
+
+.settings-fieldset__toggle:checked ~ .settings-fieldset__content {
+    display: none;
+}
+
+.settings-fieldset_legend--toggleable>label::after {
+    content: "";
+    display: inline-block;
+    border: 5px solid transparent;
+    border-top: 7px solid black;
+    vertical-align: bottom;
+    margin-left: 6px;
+}
+.settings-fieldset__toggle:checked ~ .settings-fieldset_legend--toggleable>label::after {
+    transform: translateY(-6px) rotate(180deg);
+ }
+
 .settings-fieldset label {
     flex: 1 1 10%;
 }
@@ -145,6 +186,6 @@ canvas {
 
 }
 
-.double-range input[type="range"]+input[type="range"] {
+.double-range input[type="range"] + input[type="range"] {
 
 }
