@@ -4,9 +4,21 @@ import {Global} from "../Global.js";
 
 export abstract class AbstractPatternGenerator implements PatternGenerator<FigureData, FigureData, FormState> {
   protected skipRandom: () => number = Global.GetRandomGenerator();
-  protected index: number = 0;
+  protected index: number = -1;
   constructor(protected canvas: CanvasInfo) {
-    // this.reset();
+    const proto = Object.getPrototypeOf(this);
+    const resetMethod = 'reset';
+    const descriptor = Object.getOwnPropertyDescriptor(proto,resetMethod);
+    if(descriptor && descriptor.writable) {
+      Object.defineProperty(proto, resetMethod, {
+        ...descriptor,
+        writable: false,
+        value: function (...acc: unknown[]) {
+          this._innerReset();
+          descriptor.value.call(this, ...acc);
+        }
+      });
+    }
   }
 
   protected abstract getNextValue(state?: FormState): FigureData;
@@ -24,6 +36,10 @@ export abstract class AbstractPatternGenerator implements PatternGenerator<Figur
   public throw(e?: any): IteratorResult<FigureData> {
     console.error(e);
     return {value: undefined, done: true};
+  }
+
+  private _innerReset(): void {
+    this.index = -1;
   }
 
   public abstract reset(skipSteps?: number): void;
