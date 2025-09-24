@@ -31,3 +31,5 @@
 - Limit seed value from 0 to 4294967296
 - Export to SVG
 - Export to PNG
+
+- Automatically add random ID to svg figure if none present
