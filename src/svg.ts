@@ -11,7 +11,7 @@ const svgNsName = '';
 export const parseSvg = (input: string): SVGSVGElement[] => {
   const parser = new DOMParser();
   const dom = parser.parseFromString(input, "image/svg+xml");
-  if (dom.getElementsByTagNameNS(svgNsName, 'parsererror').length > 0) {
+  if (dom.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", 'parsererror').length > 0) {
     throw new Error("SVG parsing error");
   }
   return [...dom.children[0].children] as SVGSVGElement[]
