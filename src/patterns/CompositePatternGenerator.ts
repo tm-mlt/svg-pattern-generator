@@ -5,7 +5,7 @@ import {Vector2} from "../math/vector.js";
 import {Global} from "../Global.js";
 
 export class CompositePatternGenerator extends AbstractPatternGenerator {
-  public readonly childGenerators: CompositeGenerators;
+  public readonly childGenerators: CompositeGenerators = {};
 
   constructor(protected canvas: CanvasInfo) {
     super(canvas);
